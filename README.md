@@ -1,14 +1,4 @@
----
-title: "Path To Clipboard (pathToClip)"
-output: 
-  html_document: 
-    fig_height: 2
-    fig_width: 2.5
----
-
------------------------------------------------------------------------------------
-
-#### This "Path To Clipboard" addin for RStudio does **one simple thing**...
+### This "Path To Clipboard" addin for RStudio does **one simple thing**...
 
 ## Take the active document's full path, store it in the clipboard.
 
