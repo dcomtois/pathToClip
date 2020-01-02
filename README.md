@@ -11,3 +11,5 @@ On Windows, no additional software is required.
 As with any other addin, you can assign a keyboard shortcut to it. I like to use Ctrl + Alt + C, since it's easy to remember and it's not used by default.
 
 It should be included in the addinslist package in no time.
+
+![Gif Demo](https://raw.githubusercontent.com/dcomtois/pathToClip/ca9f97aa6d7ed65ee51e70ba5246e72cf904df6f/inst/media/pathToClip_demo.gif)
