@@ -1,9 +1,0 @@
-# On Windows, a lf-like character needs to be removed.
-
-# https://stackoverflow.com/questions/17140424/placing-a-string-on-the-clipboard-without-a-newline
-#
-# btf <- function(){
-#   backstring <- readClipboard()
-#   forstring <- gsub("\\\\", "/", backstring)
-#   writeClipboard(charToRaw(paste0(forstring, ' ')))
-# }
