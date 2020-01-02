@@ -9,7 +9,3 @@ pathToClip()
 \description{
 RStudio Addin -- Copy Active Document's Path to Clipboard
 }
-\details{
-On *nix systems, the clipr package is required and relies on
-xclip or xsel. See for instance: https://bit.ly/2QEfrOB
-}
