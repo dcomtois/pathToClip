@@ -4,10 +4,7 @@
 \alias{pathToClip}
 \title{Path To Clipboard}
 \usage{
-pathToClip(sep)
-}
-\arguments{
-\item{sep}{Path separator; one of \sQuote{/}, \sQuote{\\} or \sQuote{\\\\}}
+pathToClip()
 }
 \description{
 RStudio Addin -- Copy Active Document's Path to Clipboard

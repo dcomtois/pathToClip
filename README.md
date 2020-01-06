@@ -4,6 +4,8 @@
 
 That's it! Most editors have this feature built-in, but for some reason, RStudio doesn't.
 
+This version (0.1.0) features only one addin-menu entry and it stores paths using the system-default path separator. if you need flexibility in terms of path separators, use the most up-to-date version.
+
 On OS X and Unix-like systems, the addin uses the [clipr](https://CRAN.R-project.org/package=clipr) package, which in turn relies on either "xclip" or "xsel", small utilities that can be installed in just a few seconds. See [here](https://linoxide.com/linux-how-to/copy-paste-commands-output-xclip-linux/), for distro-specific instructions.
 
 **On Windows, no additional software is required.**
