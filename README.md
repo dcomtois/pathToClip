@@ -8,14 +8,28 @@ That's it! Most editors have this feature built-in, but for some reason, RStudio
 
 **On Windows, no additional software is required.**
 
+### Installation
+
+It can be installed via ['addinslist'](https://github.com/daattali/addinslist), or using 'devtools' or 'remotes':
+
+```r
+remotes::install_github("dcomtois/pathToClip")
+```
+
+### Shortcut suggestion
+
 As with any other addin, you can assign a keyboard shortcut to it. 
 
-I like to use `< Ctrl + Alt + C >`, since it's easy to remember and it's not used by default.
+I like to use `< Ctrl + Alt + C >`, since it's easy to remember and it's not pre-assigned (see animated demo if needed).
 
-For a simplified version -- one that has only one addin-menu entry and uses the system default path separator -- install version 0.1.0 using devtools or remotes:
+### Simplified version
+
+If you don't like having 3 entries in your Addins menu and need only the platform-specific path separator, install version 0.1.0:
 
 ```r
 remotes::install_github("dcomtois/pathToClip", ref="0-1-0")
 ```
+
+### Demo
 
 ![Gif Demo](inst/media/pathToClip_demo.gif)
