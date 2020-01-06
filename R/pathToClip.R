@@ -5,7 +5,7 @@
 #' Uses the system default separator (\sQuote{\\} on Windows,
 #' \sQuote{/} on others).
 #'
-#' Use \sQuote{Path To Clipboard (\\\\)} to have the double-backslash
+#' Use \dQuote{Path To Clipboard (\\\\)} to have the double-backslash,
 #' Windows-style path.
 #'
 #' @param dbs Logical. Used for producing Windows
