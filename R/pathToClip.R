@@ -2,23 +2,15 @@
 #'
 #' RStudio Addin -- Copy Active Document's Path to Clipboard
 #'
-#' Uses the system default separator (\sQuote{\\} on Windows,
-#' \sQuote{/} on others).
-#'
-#' Use \dQuote{Path To Clipboard (\\\\)} to have the double-backslash,
-#' Windows-style path.
-#'
-#' @param dbs Logical. Used for producing Windows
-#' double-backslashed paths.
+#' @param sep Path separator; one of \sQuote{/}, \sQuote{\\} or \sQuote{\\\\}
 #'
 #' @export
-pathToClip <- function(dbs=FALSE) {
+pathToClip <- function(sep) {
 
   path <- try(rstudioapi::getSourceEditorContext()$path, silent = TRUE)
   if (class(path) == "try-error") {
     if (!"rstudioapi" %in% rownames(utils::installed.packages())) {
-      inst_rstudioapi <- utils::askYesNo(msg = "It appears rstudioapi is not installed. Install now?",
-                                         prompts = c(" [Yes] ", " No ", " Cancel "))
+      inst_rstudioapi <- utils::askYesNo(msg = "It appears rstudioapi is not installed. Install now?")
       if (!isTRUE(inst_rstudioapi))
         stop("Aborting")
       utils::install.packages("rstudioapi")
@@ -34,20 +26,23 @@ pathToClip <- function(dbs=FALSE) {
   path <- normalizePath(path)
 
   if (.Platform$OS.type == "windows") {
-    if (isTRUE(dbs)) {
+    if (sep == "/") {
+      path <- gsub("\\", "/", path, fixed = TRUE)
+    } else if (sep == "\\\\") {
       path <- gsub("\\", "\\\\", path, fixed = TRUE)
     }
     utils::writeClipboard(charToRaw(paste0(path, ' ')))
   } else {
-    if (isTRUE(dbs)) {
+    if (sep == "\\") {
+      path <- gsub("/", "\\", path, fixed = TRUE)
+    } else if (sep == "\\\\") {
       path <- gsub("/", "\\\\", path, fixed = TRUE)
     }
 
     rc <- try(clipr::write_clip(path), silent = TRUE)
     if (class(rc) == "try-error") {
       if (!"clipr" %in% rownames(utils::installed.packages())) {
-        inst_clipr <- utils::askYesNo(msg = "It appears clipr is not installed. Install now?",
-                                      prompts = c(" [Yes] ", " No ", " Cancel "))
+        inst_clipr <- utils::askYesNo(msg = "It appears clipr is not installed. Install now?")
         if (!isTRUE(inst_clipr))
           stop("Aborting")
 
@@ -64,12 +59,32 @@ pathToClip <- function(dbs=FALSE) {
   return(invisible())
 }
 
+#' Path To Clipboard (/)
+#'
+#' RStudio Addin -- Copy Active Document's Path to Clipboard
+#'
+#' Uses forward slash as path separator.
+#' @export
+pathToClip_fwd <- function() {
+  pathToClip(sep="/")
+}
+
+#' Path To Clipboard (\\)
+#'
+#' RStudio Addin -- Copy Active Document's Path to Clipboard
+#'
+#' Uses backslash as path separator.
+#' @export
+pathToClip_back <- function() {
+  pathToClip(sep="\\")
+}
+
 #' Path To Clipboard (\\\\)
 #'
 #' RStudio Addin -- Copy Active Document's Path to Clipboard
 #'
-#' Produces double-backslash, Windows-style paths.
+#' Uses double backslash as path separator.
 #' @export
-pathToClip_dbs <- function() {
-  pathToClip(dbs=TRUE)
+pathToClip_dbl_back <- function() {
+  pathToClip(sep="\\\\")
 }

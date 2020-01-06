@@ -1,10 +1,15 @@
-Name: Path To Clipboard
-Description: Copy active file's path to clipboard
-Binding: pathToClip
+Name: Path To Clipboard (/)
+Description: Copy active file's path to clipboard (using forward slash)
+Binding: pathToClip_fwd
+Interactive: false
+
+Name: Path To Clipboard (\)
+Description: Copy active file's path to clipboard (using backslash).
+Binding: pathToClip_back
 Interactive: false
 
 Name: Path To Clipboard (\\)
-Description: Copy active file's path to clipboard using escaped backslashed.
-Binding: pathToClip_dbs
+Description: Copy active file's path to clipboard (using double backslash).
+Binding: pathToClip_dbl_back
 Interactive: false
 
