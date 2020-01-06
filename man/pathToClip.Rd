@@ -4,8 +4,19 @@
 \alias{pathToClip}
 \title{Path To Clipboard}
 \usage{
-pathToClip()
+pathToClip(dbs = FALSE)
+}
+\arguments{
+\item{dbs}{Logical. Used for producing Windows
+double-backslashed paths.}
 }
 \description{
 RStudio Addin -- Copy Active Document's Path to Clipboard
+}
+\details{
+Uses the system default separator (\sQuote{\\} on Windows,
+\sQuote{/} on others).
+
+Use \sQuote{Path To Clipboard (\\\\)} to have the double-backslash
+Windows-style path.
 }

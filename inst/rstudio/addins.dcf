@@ -2,3 +2,9 @@ Name: Path To Clipboard
 Description: Copy active file's path to clipboard
 Binding: pathToClip
 Interactive: false
+
+Name: Path To Clipboard (\\)
+Description: Copy active file's path to clipboard using escaped backslashed.
+Binding: pathToClip_dbs
+Interactive: false
+
