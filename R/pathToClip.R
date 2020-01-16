@@ -8,6 +8,12 @@
 pathToClip <- function(sep) {
 
   path <- try(rstudioapi::getSourceEditorContext()$path, silent = TRUE)
+
+  if (is.null(path)) {
+    cat("No active document to get path from. Clipboard left unchanged.\n")
+    return(invisible())
+  }
+
   if (class(path) == "try-error") {
     if (!"rstudioapi" %in% rownames(utils::installed.packages())) {
       inst_rstudioapi <- utils::askYesNo(msg = "It appears rstudioapi is not installed. Install now?")
