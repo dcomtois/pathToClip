@@ -9,19 +9,14 @@ pathToClip <- function(sep) {
 
   path <- try(rstudioapi::getSourceEditorContext()$path, silent = TRUE)
 
-  if (is.null(path)) {
-    cat("No active document to get path from. Clipboard left unchanged.\n")
+  if (class(path) == "try-error") {
+    cat("An error has occurred. Clipboard left unchanged.\n")
     return(invisible())
   }
 
-  if (class(path) == "try-error") {
-    if (!"rstudioapi" %in% rownames(utils::installed.packages())) {
-      inst_rstudioapi <- utils::askYesNo(msg = "It appears rstudioapi is not installed. Install now?")
-      if (!isTRUE(inst_rstudioapi))
-        stop("Aborting")
-      utils::install.packages("rstudioapi")
-      path <- rstudioapi::getSourceEditorContext()$path
-    }
+  if (is.null(path)) {
+    cat("No active document to get path from. Clipboard left unchanged.\n")
+    return(invisible())
   }
 
   if (path == "") {
@@ -45,19 +40,14 @@ pathToClip <- function(sep) {
       path <- gsub("/", "\\\\", path, fixed = TRUE)
     }
 
+    if (!"clipr" %in% rownames(utils::installed.packages())) {
+      message("installing require package 'clipr'")
+      utils::install.packages("clipr")
+    }
+
     rc <- try(clipr::write_clip(path), silent = TRUE)
     if (class(rc) == "try-error") {
-      if (!"clipr" %in% rownames(utils::installed.packages())) {
-        inst_clipr <- utils::askYesNo(msg = "It appears clipr is not installed. Install now?")
-        if (!isTRUE(inst_clipr))
-          stop("Aborting")
-
-        utils::install.packages("clipr")
-        rc <- try(clipr::write_clip(path), silent = TRUE)
-
-        if (class(rc) == "try-error")
-          stop("An error has occured. Do you have xclip / xsel installed? Aborting.")
-      }
+      stop("An error has occured. Please make sure the 'clipr' package is correctly installed")
     }
   }
 
