@@ -19,6 +19,7 @@ pathToClip <- function() {
 
   if (class(path) == "try-error") {
     cat("An unknown error occured. Clipboard not affected.")
+    return(invisible())
   }
 
   path <- normalizePath(path)
