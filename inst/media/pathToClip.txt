@@ -1,0 +1,28 @@
+                Path To Clipboard (RStudio Addin)
+                ---------------------------------
+
+With this addin, you can store the active document's path
+to the clipboard.
+
+It's available via the very neat "addinslist" addin, but it
+can also be installed directly using remotes or devtools:
+
+> remotes::install_github("dcomtois/pathToClip")
+
+Suggested keyboard shortcut: < Ctrl + Alt + C > 
+
+
+-----------------------------------------------------------------------
+
+For a simplified version having only one menu entry 
+(using the system default path separator):
+
+> remotes::install_github("dcomtois/pathToClip", ref = "0-1-0")
+
+----------------------------------------------------------------------
+
+For more details, visit
+
+https://github.com/dcomtois/pathToClip
+
+That's all, folks!
