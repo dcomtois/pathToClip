@@ -1,12 +1,12 @@
-### This "Path To Clipboard" addin for RStudio does **one simple thing**...
+### Path To Clipboard (RStudio Addin)
 
-## It stores the active document's path into the clipboard.
+This `pathToClip` addin allows you to store the active document's path to the clipboard.
 
-That's it! Most editors have this feature built-in, but for some reason, RStudio doesn't.
+While many editors have this feature built-in, RStudio doesn't (at least not yet).
 
-**On OS X and Linux**, it uses the [clipr](https://CRAN.R-project.org/package=clipr) package, which in turn relies on either "xclip" or "xsel", small utilities that can be installed in just a few seconds. See [here](https://linoxide.com/linux-how-to/copy-paste-commands-output-xclip-linux/), for distro-specific instructions.
+**On OS X and Linux**, it uses the [clipr](https://CRAN.R-project.org/package=clipr) package, which in turn relies on either "xclip" or "xsel", small utilities that can be installed in just a few seconds. See [here](https://linoxide.com/linux-how-to/copy-paste-commands-output-xclip-linux/), for Linux distro-specific instructions.
 
-**On Windows, no additional software is required.**
+**On Windows**, no additional software is required.
 
 ### Installation
 
