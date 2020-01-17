@@ -12,19 +12,13 @@ pathToClip <- function() {
     return(invisible())
   }
 
-  if (class(path) == "try-error") {
-    if (!"rstudioapi" %in% rownames(utils::installed.packages())) {
-      inst_rstudioapi <- utils::askYesNo(msg = "It appears rstudioapi is not installed. Install now?")
-      if (!isTRUE(inst_rstudioapi))
-        stop("Aborting")
-      utils::install.packages("rstudioapi")
-      path <- rstudioapi::getSourceEditorContext()$path
-    }
-  }
-
   if (path == "") {
     cat("File must be saved first. Clipboard left unchanged.\n")
     return(invisible())
+  }
+
+  if (class(path) == "try-error") {
+    cat("An unknown error occured. Clipboard not affected.")
   }
 
   path <- normalizePath(path)
@@ -35,15 +29,14 @@ pathToClip <- function() {
     rc <- try(clipr::write_clip(path), silent = TRUE)
     if (class(rc) == "try-error") {
       if (!"clipr" %in% rownames(utils::installed.packages())) {
-        inst_clipr <- utils::askYesNo(msg = "It appears clipr is not installed. Install now?")
-        if (!isTRUE(inst_clipr))
-          stop("Aborting")
-
         utils::install.packages("clipr")
         rc <- try(clipr::write_clip(path), silent = TRUE)
 
         if (class(rc) == "try-error")
-          stop("An error has occured. Do you have xclip / xsel installed? Aborting.")
+          stop("An error has occured. Please make sure the 'clipr' package\n",
+               "is installed correctly and that clipr::clipr_available()\n",
+               "returns TRUE. If it doesn't look into the 'clipr' package's\n",
+               "documentation to try to identify and solve the issue.")
       }
     }
   }
