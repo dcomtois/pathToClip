@@ -43,6 +43,10 @@ pathToClip <- function(sep) {
       path <- gsub("/", "\\\\", path, fixed = TRUE)
     }
 
+    # To avoid slowing down the addin, we try to use clipr
+    # knowing it might not be installed. (Since clipr is not
+    # required on Windows, it was not included in the
+    # DESCRIPTION imports).
     rc <- try(clipr::write_clip(path), silent = TRUE)
 
     if (class(rc) == "try-error") {
@@ -51,7 +55,8 @@ pathToClip <- function(sep) {
         utils::install.packages("clipr")
         clipr::write_clip(path)
       } else {
-        # Let the error occur so that the proper error message is displayed
+        # Let the error occur so that the error message from clipr
+        # is displayed.
         clipr::write_clip(path)
       }
     }
