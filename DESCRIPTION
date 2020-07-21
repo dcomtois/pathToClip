@@ -2,7 +2,8 @@ Package: pathToClip
 Type: Package
 Title: Copy File Path to Clipboard (RStudio Addin)
 Version: 0.2.2
-Authors@R: person("Dominic", "Comtois", role = c("cre","aut"), email = "dominic.comtois@gmail.com")
+Authors@R: person(given = "Dominic", family = "Comtois",
+                  role = c("cre","aut"), email = "dominic.comtois@gmail.com")
 Author: Dominic Comtois [aut]
 Maintainer: Dominic Comtois <dominic.comtois@gmail.com>
 Description: This Rstudio addin copies the active document's path to the clipboard.
