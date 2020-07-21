@@ -57,6 +57,8 @@ pathToClip <- function(sep) {
       } else {
         # Let the error occur so that the error message from clipr
         # is displayed.
+        message("please install 'xclip' or 'xsel' from system terminal, ")
+        message("or using a gui-based package manager such as Synaptic's")
         clipr::write_clip(path)
       }
     }
